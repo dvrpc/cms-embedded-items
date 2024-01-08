@@ -2,11 +2,24 @@ const url = "https://dvrpc.github.io/cms-embedded-items/ceds/regions.xlsx";
 var file = await (await fetch(url)).arrayBuffer();
 var workbook = XLSX.read(file);
 
+var regionsMap = {
+  dvrpc: "DVRPC",
+  ATL: "Atlanta",
+  BAL: "Baltimore",
+  BOS: "Boston",
+  CHI: "Chicago",
+  DAL: "Dallas",
+  LAX: "Los Angeles",
+  NYC: "New York",
+  PIT: "Pittsburgh",
+  WAS: "Washington",
+};
+
 var geographySelect = document.getElementById("geography");
-workbook.SheetNames.map((name) => {
+workbook.SheetNames.slice(1).map((name) => {
   var option = document.createElement("option");
   option.value = name;
-  option.innerHTML = name;
+  option.innerHTML = regionsMap[name];
   geographySelect.appendChild(option);
 });
 
@@ -15,7 +28,7 @@ var chart;
 function updateChart() {
   if (chart) chart.destroy();
   document.getElementById("geography-header").textContent =
-    geographySelect.value;
+    regionsMap[geographySelect.value];
   var worksheet = workbook.Sheets[geographySelect.value];
   var raw_data = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
   raw_data = raw_data.filter((row) => parseInt(row[3]));
