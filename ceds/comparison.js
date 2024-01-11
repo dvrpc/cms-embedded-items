@@ -16,10 +16,6 @@ var regionsMap = {
   WAS: "Washington",
 };
 
-var bubbleMap = {
-  0.2: "#c1e7ff",
-};
-
 var geographySelect = document.getElementById("geography");
 workbook.SheetNames.slice(2, -1).map((name) => {
   var option = document.createElement("option");
