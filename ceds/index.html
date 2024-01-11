@@ -10,17 +10,49 @@
     }
   </style>
   <body>
-    <h3 id="geography-header"></h3>
     <select id="geography"></select>
+    <div style="position: relative; width: 100vw; display: flex">
+      <h3 style="width: 50vw">DVRPC</h3>
+      <h3 style="width: 50vw" id="geography-header"></h3>
+    </div>
     <div
       class="chart-container"
-      style="position: relative; height: 50vh; width: 100vw"
+      style="position: relative; height: 50vh; width: 50vw; display: flex"
     >
+      <canvas id="bubble-dvrpc"></canvas>
       <canvas id="bubble"></canvas>
     </div>
+    <p>
+      The Philadelphia region has five sectors with an LQ of 1.25 or higher:
+      Educational Services (2.26), Management of Companies and Enterprises
+      (1.32), Arts, Entertainment, and Recreation (1.32), Health Care and Social
+      Assistance (1.29), and Finance and Insurance (1.26). These sectors account
+      for 969,619 jobs, comprising 39 percent of the region’s total employment.
+    </p>
+    <p>
+      Two of the five competitive sectors have medium automation risks: Arts,
+      Entertainment, and Recreation (54.9 percent) and Finance and Insurance
+      (51.8 percent). These two sectors comprise 21.9 percent of the region’s
+      competitive sector total employment. Three of the five competitive sectors
+      have low automation risks: Educational Services (21.9 percent), Management
+      of Companies and Enterprises (36.1 percent), and Health Care and Social
+      Assistance (25.5 percent). These three sectors comprise 78.1 percent of
+      the region’s competitive sector total employment.
+    </p>
+    <p>
+      Three of the five competitive sectors have high telework capacities:
+      Educational Services (35 percent), Management of Companies and Enterprises
+      (35.2 percent), Finance and Insurance (35.3 percent). These three sectors
+      comprise 41.9 percent of the region’s competitive sector total employment.
+      Two of the five competitive sectors have medium telework capacities: Arts,
+      Entertainment, and Recreation (22 percent) and Health Care and Social
+      Assistance (25.9 percent). These two sectors comprise 58.1 percent of the
+      region’s competitive sector total employment.
+    </p>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-autocolors"></script>
     <script src="./index.js" type="module"></script>
   </body>
 </html>
