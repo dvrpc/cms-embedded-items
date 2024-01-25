@@ -2,21 +2,20 @@
 <html lang="en">
 
 <body>
-
     <div class="card">
         <h2>Comments</h2>
         <form>
             <div class="form-group">
-                <label for="inputTitle">Name</label>
-                <input type="text" class="form-control" name="Name" id="inputTitle">
+                <label>Name</label>
+                <input type="text" class="form-control" name="Name" />
             </div>
             <div class="form-group">
-                <label for="inputEmail">Email</label>
-                <input type="text" class="form-control" id="inputEmail" name="Email">
+                <label>Email</label>
+                <input type="text" class="form-control" name="Email" />
             </div>
             <div class="form-group">
-                <label for="inputCounty">County</label>
-                <select name="County" class="form-control" id="inputCounty">
+                <label>County</label>
+                <select name="County" class="form-control">
                     <option>Bucks County</option>
                     <option>Burlington County</option>
                     <option>Camden County</option>
@@ -29,47 +28,52 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="inputComments">Comments</label>
-                <textarea id="inputComments" class="form-control" name="Comments"></textarea>
+                <label>Comments</label>
+                <textarea class="form-control" name="Comments"></textarea>
             </div>
             <div class="checkbox">
-                <label><input type="checkbox" id="inputMailing" name="Mailing" value="Yes">
-                    Join Mailing List</label>
+                <label><input type="checkbox" name="Mailing" value="Yes" class="form-control" /> Join Mailing
+                    List</label>
             </div>
             <button type="submit" class="btn btn-primary">Send</button>
         </form>
     </div>
 
-
-
     <script type="text/javascript">
-        $(document).ready(function () {
-            $('#mainContent form').on('submit', function (e) {
+        document.addEventListener("DOMContentLoaded", async function () {
+            var form = document.querySelector("form");
+            form.addEventListener("submit", async function (e) {
                 e.preventDefault();
-                var form = this;
-                $('.alert-danger').remove();
-                //simple validation: all inputs must not have length of 0
-                if ($('#mainContent form input[name], #mainContent form textarea[name]').every(function (el) { return !!el.value.length })) {
-                    $.ajax({
-                        url: 'save.aspx',
-                        type: 'POST',
-                        data: $(form).serialize(),
-                        success: function () {
-                            $(form).before($('<p>').addClass('alert alert-success').html('The form submission was successful. Thank you for your input!').show()).hide();
-                        },
-                        error: function () {
-                            var t = [];
-                            $(form).find('[name]').each(function () { t.push($(this).attr('name') + ': ' + $(this).val()); });
-                            $(form).before($('<p>').addClass('alert alert-danger').html('The form submission was not successful. Please <a href="mailto:public_affairs@dvrpc.org?subject=Comments for DVRPC&body=' + t.join('%0D%0A') + '">send an email to DVRPC</a> to submit your request instead. Thanks for your patience.').show()).hide();
+                var data = new FormData(e.target);
+                console.log(data)
+                try {
+                    var request = await fetch(
+                        "https://staging.dvrpc.org/getinvolved/comment/save.aspx",
+                        {
+                            headers: {
+                                "Content-Type": "application/x-www-form-urlencoded",
+                            },
+                            method: "POST",
+                            body: new URLSearchParams({
+                                County: data.get("County"),
+                                Email: data.get("Email"),
+                                Message: data.get("Comments"),
+                                Name: data.get("Name"),
+                                ReplyTo: data.get("email"),
+                            }),
                         }
-                    });
-                }
-                else {
-                    $(form).before($('<p>').addClass('alert alert-danger').html('Please complete all fields below.').show());
+                    );
+                    if (request.ok) {
+                        form.reset();
+                        window.alert(
+                            "Your comment has been submitted. Thank you for the feedback!"
+                        );
+                    }
+                } catch (err) {
+                    console.error(err);
                 }
             });
         });
-
     </script>
 </body>
 
