@@ -17,7 +17,7 @@ var regionsMap = {
 };
 
 var geographySelect = document.getElementById("geography");
-workbook.SheetNames.slice(2, -1).map((name) => {
+workbook.SheetNames.slice(2, -2).map((name) => {
   var option = document.createElement("option");
   option.value = name;
   option.innerHTML = regionsMap[name];
@@ -26,20 +26,20 @@ workbook.SheetNames.slice(2, -1).map((name) => {
 
 var dvrpcWorksheet = workbook.Sheets["dvrpc"];
 var dvrpc_data = XLSX.utils.sheet_to_json(dvrpcWorksheet, { header: 1 });
-dvrpc_data = dvrpc_data.filter((row) => parseInt(row[3]));
-var maxRadius = Math.max(...dvrpc_data.slice(0, -2).map((row) => row[3]));
+dvrpc_data = dvrpc_data.filter((row) => parseInt(row[4])).slice(0, -2);
+var maxRadius = Math.max(...dvrpc_data.map((row) => row[4]));
 
 var dvrpcChart = new Chart(document.getElementById("bubble-dvrpc"), {
   type: "bubble",
   data: {
-    labels: dvrpc_data.map((row) => row[0]),
+    labels: dvrpc_data.map((row) => row[1]),
     datasets: [
       {
         label: "null",
         data: dvrpc_data.map((row) => ({
-          x: (row[1] * 100).toFixed(1),
-          y: (row[2] * 100).toFixed(1),
-          r: Math.round((row[3] / maxRadius) * 85),
+          x: (row[2] * 100).toFixed(1),
+          y: (row[3] * 100).toFixed(1),
+          r: Math.round((row[4] / maxRadius) * 55),
         })),
       },
     ],
@@ -59,9 +59,9 @@ var dvrpcChart = new Chart(document.getElementById("bubble-dvrpc"), {
       tooltip: {
         callbacks: {
           label: function (context) {
-            const row = dvrpc_data.filter((row) => row[0] === context.label)[0];
-            const total = `Employment: ${row[3].toLocaleString()}`;
-            const lq = `LQ: ${row[4]}`;
+            const row = dvrpc_data.filter((row) => row[1] === context.label)[0];
+            const total = `Employment: ${row[4].toLocaleString()}`;
+            const lq = `LQ: ${row[5]}`;
             return [total, lq];
           },
         },
@@ -78,19 +78,19 @@ function updateChart() {
     regionsMap[geographySelect.value];
   var worksheet = workbook.Sheets[geographySelect.value];
   var raw_data = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
-  raw_data = raw_data.filter((row) => parseInt(row[3]));
+  raw_data = raw_data.filter((row) => parseInt(row[4]));
 
   chart = new Chart(document.getElementById("bubble"), {
     type: "bubble",
     data: {
-      labels: raw_data.map((row) => row[0]),
+      labels: raw_data.map((row) => row[1]),
       datasets: [
         {
           label: "null",
           data: raw_data.map((row) => ({
-            x: (row[1] * 100).toFixed(1),
-            y: (row[2] * 100).toFixed(1),
-            r: Math.round((row[3] / maxRadius) * 85),
+            x: (row[2] * 100).toFixed(1),
+            y: (row[3] * 100).toFixed(1),
+            r: Math.round((row[4] / maxRadius) * 55),
           })),
         },
       ],
@@ -110,9 +110,9 @@ function updateChart() {
         tooltip: {
           callbacks: {
             label: function (context) {
-              const row = raw_data.filter((row) => row[0] === context.label)[0];
-              const total = `Employment: ${row[3].toLocaleString()}`;
-              const lq = `LQ: ${row[4]}`;
+              const row = raw_data.filter((row) => row[1] === context.label)[0];
+              const total = `Employment: ${row[4].toLocaleString()}`;
+              const lq = `LQ: ${row[5]}`;
               return [total, lq];
             },
           },
