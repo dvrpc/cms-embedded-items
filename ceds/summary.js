@@ -16,6 +16,7 @@ var total = new Chart(document.getElementById("total"), {
       {
         label: "null",
         data: raw_data.map((row) => row[1] * 100),
+        backgroundColor: "#662D91",
       },
     ],
   },
@@ -70,17 +71,17 @@ var automation = new Chart(document.getElementById("automation"), {
       {
         label: "High Automation",
         data: raw_data.map((row) => row[4] * 100),
-        backgroundColor: "#662d91",
+        backgroundColor: "#ED5565",
       },
       {
         label: "Medium Automation",
         data: raw_data.map((row) => row[3] * 100),
-        backgroundColor: "#ed5537",
+        backgroundColor: "#F7941D",
       },
       {
         label: "Low Automation",
         data: raw_data.map((row) => row[2] * 100),
-        backgroundColor: "#cfb7e5",
+        backgroundColor: "#2B1956",
       },
     ],
   },
@@ -131,17 +132,17 @@ var telework = new Chart(document.getElementById("telework"), {
       {
         label: "High Telework",
         data: raw_data.map((row) => row[7] * 100),
-        backgroundColor: "#662d91",
+        backgroundColor: "#ED5565",
       },
       {
         label: "Medium Telework",
         data: raw_data.map((row) => row[6] * 100),
-        backgroundColor: "#f7941d",
+        backgroundColor: "#F7941D",
       },
       {
         label: "Low Telework",
         data: raw_data.map((row) => row[5] * 100),
-        backgroundColor: "#cfb7e5",
+        backgroundColor: "#2B1956",
       },
     ],
   },
