@@ -27,7 +27,7 @@ workbook.SheetNames.slice(2, -1).map((name) => {
 var dvrpcWorksheet = workbook.Sheets["dvrpc"];
 var dvrpc_data = XLSX.utils.sheet_to_json(dvrpcWorksheet, { header: 1 });
 dvrpc_data = dvrpc_data.filter((row) => parseInt(row[3]));
-var maxRadius = Math.max(...dvrpc_data.map((row) => row[3]));
+var maxRadius = Math.max(...dvrpc_data.slice(0, -2).map((row) => row[3]));
 
 var dvrpcChart = new Chart(document.getElementById("bubble-dvrpc"), {
   type: "bubble",
@@ -39,7 +39,7 @@ var dvrpcChart = new Chart(document.getElementById("bubble-dvrpc"), {
         data: dvrpc_data.map((row) => ({
           x: (row[1] * 100).toFixed(1),
           y: (row[2] * 100).toFixed(1),
-          r: Math.round((row[3] / maxRadius) * 300),
+          r: Math.round((row[3] / maxRadius) * 85),
         })),
       },
     ],
@@ -79,7 +79,6 @@ function updateChart() {
   var worksheet = workbook.Sheets[geographySelect.value];
   var raw_data = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
   raw_data = raw_data.filter((row) => parseInt(row[3]));
-  var maxRadius = Math.max(...raw_data.map((row) => row[3]));
 
   chart = new Chart(document.getElementById("bubble"), {
     type: "bubble",
@@ -91,7 +90,7 @@ function updateChart() {
           data: raw_data.map((row) => ({
             x: (row[1] * 100).toFixed(1),
             y: (row[2] * 100).toFixed(1),
-            r: Math.round((row[3] / maxRadius) * 650),
+            r: Math.round((row[3] / maxRadius) * 85),
           })),
         },
       ],
