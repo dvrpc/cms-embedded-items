@@ -7,15 +7,15 @@
         <form>
             <div class="form-group">
                 <label>Name</label>
-                <input type="text" class="form-control" name="Name" />
+                <input type="text" class="form-control" name="Name" required />
             </div>
             <div class="form-group">
                 <label>Email</label>
-                <input type="text" class="form-control" name="Email" />
+                <input type="text" class="form-control" name="Email" required />
             </div>
             <div class="form-group">
                 <label>County</label>
-                <select name="County" class="form-control">
+                <select name="County" class="form-control" required>
                     <option>Bucks County</option>
                     <option>Burlington County</option>
                     <option>Camden County</option>
@@ -29,7 +29,7 @@
             </div>
             <div class="form-group">
                 <label>Comments</label>
-                <textarea class="form-control" name="Comments"></textarea>
+                <textarea class="form-control" name="Comments" required></textarea>
             </div>
             <div class="checkbox">
                 <label><input type="checkbox" name="Mailing" value="Yes" class="form-control" /> Join Mailing
@@ -45,10 +45,9 @@
             form.addEventListener("submit", async function (e) {
                 e.preventDefault();
                 var data = new FormData(e.target);
-                console.log(data)
                 try {
                     var request = await fetch(
-                        "https://staging.dvrpc.org/getinvolved/comment/save.aspx",
+                        "https://www.dvrpc.org/getinvolved/comment/save.aspx",
                         {
                             headers: {
                                 "Content-Type": "application/x-www-form-urlencoded",
