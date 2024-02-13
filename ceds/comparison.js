@@ -71,11 +71,16 @@ var dvrpcChart = new Chart(document.getElementById("bubble-dvrpc"), {
 });
 
 var chart;
+var prev;
 
 function updateChart() {
   if (chart) chart.destroy();
+  if (prev) prev.classList.toggle("geography");
   document.getElementById("geography-header").textContent =
     regionsMap[geographySelect.value];
+  document.getElementById(geographySelect.value).classList.toggle("geography");
+  prev = document.getElementById(geographySelect.value);
+
   var worksheet = workbook.Sheets[geographySelect.value];
   var raw_data = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
   raw_data = raw_data.filter((row) => parseInt(row[4]));

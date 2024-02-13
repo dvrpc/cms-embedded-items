@@ -9,6 +9,10 @@
   body {
     margin: 0px;
   }
+
+  .geography {
+    display: none;
+  }
 </style>
 
 <body>
@@ -21,8 +25,8 @@
     <canvas id="bubble-dvrpc"></canvas>
     <canvas id="bubble"></canvas>
   </div>
-  <div style="display: flex;">
-    <div style="padding-right: 1.25rem">
+  <div style="display: flex; width: 100%">
+    <div style="padding-right: 1.25rem; width: 50vw;">
       <p>
         The Philadelphia region has five sectors with an LQ of 1.25 or higher:
         Educational Services (2.26), Management of Companies and Enterprises
@@ -51,34 +55,217 @@
         region’s competitive sector total employment.
       </p>
     </div>
-    <div>
-      <p>
-        The ... region has five sectors with an LQ of 1.25 or higher:
-        Educational Services (2.26), Management of Companies and Enterprises
-        (1.32), Arts, Entertainment, and Recreation (1.32), Health Care and Social
-        Assistance (1.29), and Finance and Insurance (1.26). These sectors account
-        for 969,619 jobs, comprising 39 percent of the region’s total employment.
-      </p>
-      <p>
-        Two of the five competitive sectors have medium automation risks: Arts,
-        Entertainment, and Recreation (54.9 percent) and Finance and Insurance
-        (51.8 percent). These two sectors comprise 21.9 percent of the region’s
-        competitive sector total employment. Three of the five competitive sectors
-        have low automation risks: Educational Services (21.9 percent), Management
-        of Companies and Enterprises (36.1 percent), and Health Care and Social
-        Assistance (25.5 percent). These three sectors comprise 78.1 percent of
-        the region’s competitive sector total employment.
-      </p>
-      <p>
-        Three of the five competitive sectors have high telework capacities:
-        Educational Services (35 percent), Management of Companies and Enterprises
-        (35.2 percent), Finance and Insurance (35.3 percent). These three sectors
-        comprise 41.9 percent of the region’s competitive sector total employment.
-        Two of the five competitive sectors have medium telework capacities: Arts,
-        Entertainment, and Recreation (22 percent) and Health Care and Social
-        Assistance (25.9 percent). These two sectors comprise 58.1 percent of the
-        region’s competitive sector total employment.
-      </p>
+    <div style="width: 50vw;">
+      <div id="ATL" class="geography">
+        <p>
+          The Atlanta region has five sectors with an LQ of 1.25 or higher: Management of Companies and Enterprises
+          (1.64), Transportation and Warehousing (1.59), Information (1.51), Professional, Scientific, and Technical
+          Services (1.34), Real Estate and Rental and Leasing (1.28). These sectors account for 667,876 jobs, comprising
+          27.6 percent of the region’s total employment.
+        </p>
+        <p>
+          Three of the five competitive sectors have high automation risks: Transportation and Warehousing (70.7
+          percent)
+          and Real Estate and Rental and Leasing (65.6 percent). These two sectors comprise 33.4 percent of the region’s
+          competitive sector total employment. Three of the five competitive sectors have low automation risks:
+          Management
+          of Companies and Enterprises (36.1 percent), Information (27.8 percent), and Professional, Scientific, and
+          Technical Services (33.6 percent). These three sectors comprise 66.6 percent of the region’s competitive
+          sector
+          total employment.
+        </p>
+        <p>
+          Four of the five competitive sectors have high telework capacity: Management of Companies and Enterprises
+          (35.2
+          percent), Information (43.5 percent), Professional, Scientific, and Technical Services (35.2 percent) and Real
+          Estate and Rental and Leasing (35.3 percent). These four sectors comprise 74.5 percent of the region’s
+          competitive sector total employment. One of the five competitive sectors have medium telework capacity:
+          Transportation and Warehousing (22 percent). This sector comprises 25.5 percent of the region’s competitive
+          sector total employment.
+        </p>
+      </div>
+      <div id="BAL" class="geography">
+        <p>
+          The Baltimore region has two sectors with an LQ of 1.25 or higher: Health Care and Social Assistance (1.77)
+          and
+          Professional, Scientific, and Technical Services (1.70). These sectors account for 199,362 jobs, comprising
+          17.4
+          percent of the region’s total employment.
+        </p>
+        <p>Both competitive sectors have a low automation risk: Health Care and Social Assistance (21.9 percent) and
+          Professional, Scientific, and Technical Services (33.6 percent). </p>
+        <p>
+          Both competitive sectors have a high telework capacity: Health Care and Social Assistance (35 percent) and
+          Professional, Scientific, and Technical Services (35.2 percent).
+        </p>
+      </div>
+      <div id="BOS" class="geography">
+        <p>
+          The Boston region has four sectors with an LQ of 1.25 or higher: Educational Services (2.53), Information
+          (1.75), Professional, Scientific, and Technical Services (1.61) and Management of Companies and Enterprises
+          (1.44). These sectors account for 666,319 jobs, comprising 27.4 percent of the region’s total employment.
+        </p>
+        <p>
+          All four competitive sectors have low automation risks: Educational Services (21.9 percent), Information (27.8
+          percent), Professional, Scientific and Technical Services (33.6 percent), and Management of Companies and
+          Enterprises (36.1 percent).
+        </p>
+        <p>
+          All four competitive sectors have high telework capacity: Educational Services (35 percent), Information (43.5
+          percent), Professional, Scientific and Technical Services (35.2 percent), and Management of Companies and
+          Enterprises (35.2 percent).
+        </p>
+      </div>
+      <div id="CHI" class="geography">
+        <p>
+          The Chicago region has five sectors with an LQ of 1.25 or higher: Management of Companies and Enterprises
+          (1.53), Transportation and Warehousing (1.38), Wholesale Trade (1.35), Finance and Insurance (1.31) and
+          Educational Services (1.28). These sectors account for 1,080,926 jobs, comprising 26.9 percent of the region’s
+          total employment.
+        </p>
+        <p>
+          One of the five competitive sectors have high automation risks: Transportation and Warehousing (70.7 percent).
+          This sector comprises 22.8 percent of the region’s competitive sector total employment. Two of the five
+          competitive sectors have medium automation risks: Wholesale Trade (58.1 percent) and Finance and Insurance
+          (51.8
+          percent). These two sectors comprise 48.8 percent of the region’s competitive sector total employment. Two of
+          the five competitive sectors have low automation risks: Management of Companies and Enterprises (36.1 percent)
+          and Educational Services (21.9 percent). These two sectors comprise 28.5 percent of the region’s competitive
+          sector total employment.
+        </p>
+        <p>
+          Three of the five competitive sectors have high telework capacity: Management of Companies and Enterprises
+          (35.2
+          percent), Finance and Insurance (35.3 percent) and Educational Services (35 percent). These three sectors
+          comprise 54 percent of the region’s competitive sector total employment. Two of the five competitive sectors
+          have medium telework capacity: Transportation and Warehousing (22 percent) and Wholesale Trade (29.5 percent).
+          These two sectors comprise 46 percent of the region’s competitive sector total employment.
+        </p>
+      </div>
+      <div id="DAL" class="geography">
+        <p>
+          The Dallas region has four sectors with an LQ of 1.25 or higher: Transportation and Warehousing (1.57),
+          Finance
+          and Insurance (1.45), Management of Companies and Enterprises (1.37), and Real Estate and Rental and Leasing
+          (1.33). These sectors account for 666,705 jobs, comprising 20.5 percent of the region’s total employment.
+        </p>
+        <p>
+          Two of the four sectors have a high automation risk: Transportation and Warehousing (70.7 percent) and Real
+          Estate and Rental and Leasing (65.6 percent). These sectors comprise 44.9 percent of the region’s competitive
+          sector total employment. One of the four sectors has a medium automation risk: Finance and Insurance (51.8
+          percent). This sector comprises 37 percent of the region’s competitive sector total employment. One of the
+          four
+          sectors has a low automation risk: Management of Companies and Enterprises (36.1 percent). This sector
+          comprises
+          18.1 percent of the region’s competitive sector total employment.
+        </p>
+        <p>
+          Three of the four sectors have high telework capacity: Finance and Insurance (35.3 percent), Management of
+          Companies and Enterprises (35.2 percent), and Real Estate and Rental and Leasing (35.3 percent). These sectors
+          comprise 66.2 percent of the region’s competitive sector total employment. One of the four sectors have medium
+          telework capacity: Transportation and Warehousing (22 percent). This sector comprises 33.8 percent of the
+          region’s competitive sector total employment.
+        </p>
+      </div>
+      <div id="LAX" class="geography">
+        <p>
+          The Los Angeles region has five sectors with an LQ of 1.25 or higher: Information (1.78), Arts, Entertainment,
+          and Recreation (1.59), Real Estate and Rental and Leasing (1.56), Wholesale Trade (1.41), and Educational
+          Services (1.26). These sectors account for 995,160 jobs, comprising 19.6 percent of the region’s total
+          employment.
+        </p>
+        <p>
+          One of the five sectors has a high automation risk: Real Estate and Rental and Leasing (65.6 percent). This
+          sector comprises 13.5 percent of the region’s competitive sector total employment. Two of the five sectors
+          have
+          a medium automation risk: Arts, Entertainment, and Recreation (54.9 percent) and Wholesale Trade (58.1
+          percent).
+          These sectors comprise 44.9 percent of the region’s competitive sector total employment. Two of the five
+          sectors
+          have a low automation risk: Information (27.8 percent) and Educational Services (21.9 percent). These two
+          sectors comprise 41.6 percent of the region’s competitive sector total employment.
+        </p>
+        <p>
+          Three of the five sectors have high telework capacity: Information (43.5 percent), Real Estate and Rental and
+          Leasing (35.3 percent), and Educational Services (35 percent). These sectors comprise 55.1 percent of the
+          region’s competitive sector total employment. Two of the five sectors have medium telework capacity: Arts,
+          Entertainment, and Recreation (22 percent) and Wholesale Trade (29.5 percent). These sectors comprise 44.9
+          percent of the region’s competitive sector total employment.
+        </p>
+      </div>
+      <div id="NYC" class="geography">
+        <p>
+          The New York region has six sectors with an LQ of 1.25 or higher: Educational Services (1.60), Information
+          (1.54), Real Estate and Rental and Leasing (1.40), Finance and Insurance (1.37), Health Care and Social
+          Assistance (1.31), and Professional, Scientific, and Technical Services (1.26).
+        </p>
+        <p>
+          One of the six sectors has a high automation risk: Real Estate and Rental and Leasing (65.6 percent). This
+          sector comprises 4.9 percent of the region’s competitive sector total employment. One of the six sectors has a
+          medium automation risk: Finance and Insurance (51.8 percent). This sector comprises 14.8 percent of the
+          region’s
+          competitive sector total employment. Four of the six sectors have a low automation risk: Educational Services
+          (21.9 percent), Information (27.8 percent), Health Care and Social Assistance (25.5 percent), and
+          Professional,
+          Scientific, and Technical Services (33.6 percent). These sectors comprise 80.2 percent of the region’s
+          competitive sector total employment.
+        </p>
+        <p>
+          Five of the six sectors have high telework capacity: Educational Services (35 percent), Information (43.5
+          percent), Real Estate and Rental and Leasing (35.3 percent), Finance and Insurance (35.3 percent), and
+          Professional, Scientific, and Technical Services (35.2 percent). These sectors comprise 56.6 percent of the
+          region’s competitive sector total employment. One of the six sectors has medium telework capacity: Health Care
+          and Social Assistance (25.9 percent). This sector comprises 43.4 percent of the region’s competitive sector
+          total employment.
+        </p>
+      </div>
+      <div id="PIT" class="geography">
+        <p>
+          The Pittsburgh region has four sectors with an LQ of 1.25 or higher: Management of Companies and Enterprises
+          (2.02), Educational Services (2.02), Mining, Quarrying, and Oil and Gas Extraction (1.62), and Utilities
+          (1.50).
+          These sectors account for 127,152 jobs, comprising 12.3 percent of the region’s total employment.
+        </p>
+        <p>
+          One of the four sectors has a medium automation risk: Mining, Quarrying, and Oil and Gas Extraction (59.6
+          percent). This sector comprises 4.9 percent of the region’s competitive sector total employment. Three of the
+          four sectors have a low automation risk: Management of Companies and Enterprises (36.1 percent), Educational
+          Services (21.9 percent), and Utilities (40.7 percent). These sectors comprise 95.1 percent of the region’s
+          competitive sector total employment.
+        </p>
+        <p>
+          Two of the four sectors have high telework capacity: Management of Companies and Enterprises (35.2 percent)
+          and
+          Educational Services (35 percent). These sectors comprise 89.1 percent of the region’s competitive sector
+          total
+          employment. One of the four sectors has medium telework capacity: Utilities (26.8 percent). This sector
+          comprises 6 percent of the region’s competitive sector total employment. One of the four sectors has low
+          telework capacity: Mining, Quarrying, and Oil and Gas Extraction (16.7 percent). This sector comprises 4.9
+          percent of the region’s competitive sector total employment.
+        </p>
+      </div>
+      <div id="WAS" class="geography">
+        <p>
+          The Washington, D.C. region has four sectors with an LQ of 1.25 or higher: Professional, Scientific, and
+          Technical Services (3.10), Other Services (except Public Administration) (1.74), Information (1.56), and
+          Educational Services (1.34). These sectors account for 993,386 jobs, comprising 37.7 percent of the region’s
+          total employment.
+        </p>
+        <p>
+          All four sectors have a low automation risk: Professional, Scientific, and Technical Services (33.6 percent),
+          Other Services (except Public Administration) (50.5 percent), Information (27.8 percent), and Educational
+          Services (21.9 percent).
+        </p>
+        <p>
+          Three of the four sectors have high telework capacity: Professional, Scientific, and Technical Services (35.2
+          percent), Information (43.5 percent), and Educational Services (35 percent). These sectors comprise 81.7
+          percent
+          of the region’s competitive sector total employment. One of the four sectors has medium telework capacity:
+          Other
+          Services (except Public Administration) (23.5 percent). This sector comprises 18.3 percent of the region’s
+          competitive sector total employment.
+        </p>
+      </div>
     </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
