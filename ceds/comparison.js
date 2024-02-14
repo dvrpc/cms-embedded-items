@@ -1,8 +1,6 @@
 const url = "https://dvrpc.github.io/cms-embedded-items/ceds/regions.xlsx";
 var file = await (await fetch(url)).arrayBuffer();
 var workbook = XLSX.read(file);
-const autocolors = window["chartjs-plugin-autocolors"];
-Chart.register(autocolors);
 
 var regionsMap = {
   ATL: "Atlanta",
@@ -14,6 +12,26 @@ var regionsMap = {
   NYC: "New York",
   PIT: "Pittsburgh",
   WAS: "Washington",
+};
+
+var colors = {
+  51: "#989A9B99",
+  61: "#4B743699",
+  54: "#74985F99",
+  55: "#8CBC7399",
+  52: "#F8952199",
+  56: "#F36F3199",
+  53: "#EA563799",
+  62: "#27255E99",
+  22: "#4D318999",
+  31: "#9D83BC99",
+  42: "#A8449999",
+  81: "#66318C99",
+  71: "#6566AE99",
+  23: "#454DA199",
+  48: "#D11F4599",
+  44: "#D21C8B99",
+  72: "#AA272599",
 };
 
 var geographySelect = document.getElementById("geography");
@@ -40,6 +58,7 @@ var dvrpcChart = new Chart(document.getElementById("bubble-dvrpc"), {
           x: (row[2] * 100).toFixed(1),
           y: (row[3] * 100).toFixed(1),
           r: Math.round((row[4] / maxRadius) * 55),
+          category: row[0],
         })),
       },
     ],
@@ -50,9 +69,6 @@ var dvrpcChart = new Chart(document.getElementById("bubble-dvrpc"), {
       autoPadding: false,
     },
     plugins: {
-      autocolors: {
-        mode: "data",
-      },
       legend: {
         display: false,
       },
@@ -66,6 +82,9 @@ var dvrpcChart = new Chart(document.getElementById("bubble-dvrpc"), {
           },
         },
       },
+    },
+    backgroundColor: function (context) {
+      return colors[context.raw.category];
     },
   },
 });
@@ -96,6 +115,7 @@ function updateChart() {
             x: (row[2] * 100).toFixed(1),
             y: (row[3] * 100).toFixed(1),
             r: Math.round((row[4] / maxRadius) * 55),
+            category: row[0],
           })),
         },
       ],
@@ -106,9 +126,6 @@ function updateChart() {
         autoPadding: false,
       },
       plugins: {
-        autocolors: {
-          mode: "data",
-        },
         legend: {
           display: false,
         },
@@ -122,6 +139,9 @@ function updateChart() {
             },
           },
         },
+      },
+      backgroundColor: function (context) {
+        return colors[context.raw.category];
       },
     },
   });
