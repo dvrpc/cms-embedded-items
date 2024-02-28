@@ -64,6 +64,20 @@ var dvrpcChart = new Chart(document.getElementById("bubble-dvrpc"), {
     ],
   },
   options: {
+    scales: {
+      x: {
+        title: {
+          display: true,
+          text: "Automation Risk",
+        },
+      },
+      y: {
+        title: {
+          display: true,
+          text: "Telework Capacity",
+        },
+      },
+    },
     maintainAspectRatio: false,
     layout: {
       autoPadding: false,
@@ -78,7 +92,16 @@ var dvrpcChart = new Chart(document.getElementById("bubble-dvrpc"), {
             const row = dvrpc_data.filter((row) => row[1] === context.label)[0];
             const total = `Employment: ${row[4].toLocaleString()}`;
             const lq = `LQ: ${row[5]}`;
-            return [total, lq];
+            const naics = `NAICS Code: ${row[0]}`;
+            const automation = `Automation Weight: ${row[2].toLocaleString(
+              undefined,
+              { style: "percent", minimumFractionDigits: 1 }
+            )}`;
+            const telework = `Telework Score: ${row[3].toLocaleString(
+              undefined,
+              { style: "percent", minimumFractionDigits: 1 }
+            )}`;
+            return [total, lq, naics, automation, telework];
           },
         },
       },
@@ -121,6 +144,20 @@ function updateChart() {
       ],
     },
     options: {
+      scales: {
+        x: {
+          title: {
+            display: true,
+            text: "Automation Risk",
+          },
+        },
+        y: {
+          title: {
+            display: true,
+            text: "Telework Capacity",
+          },
+        },
+      },
       maintainAspectRatio: false,
       layout: {
         autoPadding: false,
@@ -135,7 +172,16 @@ function updateChart() {
               const row = raw_data.filter((row) => row[1] === context.label)[0];
               const total = `Employment: ${row[4].toLocaleString()}`;
               const lq = `LQ: ${row[5]}`;
-              return [total, lq];
+              const naics = `NAICS Code: ${row[0]}`;
+              const automation = `Automation Weight: ${row[2].toLocaleString(
+                undefined,
+                { style: "percent", minimumFractionDigits: 1 }
+              )}`;
+              const telework = `Telework Score: ${row[3].toLocaleString(
+                undefined,
+                { style: "percent", minimumFractionDigits: 1 }
+              )}`;
+              return [total, lq, naics, automation, telework];
             },
           },
         },
