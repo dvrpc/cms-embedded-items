@@ -36,6 +36,21 @@
         <canvas id="bubble-dvrpc"></canvas>
         <canvas id="bubble"></canvas>
     </div>
+    <h3>Competitive Sector Employment Share of Total Employment</h3>
+    <div class="chart-container" style="position: relative; height: 50vh; width: 50vw; display: flex;">
+        <canvas id="total-dvrpc"></canvas>
+        <canvas id="total"></canvas>
+    </div>
+    <h3>Competitive Sector Employment by Automation Risk</h3>
+    <div class="chart-container" style="position: relative; height: 50vh; width: 50vw; display: flex;">
+        <canvas id="automation-dvrpc"></canvas>
+        <canvas id="automation"></canvas>
+    </div>
+    <h3>Competitive Sector Employment by Telework Capacity</h3>
+    <div class="chart-container" style="position: relative; height: 50vh; width: 50vw; display: flex;">
+        <canvas id="telework-dvrpc"></canvas>
+        <canvas id="telework"></canvas>
+    </div>
     <div style="display: flex; width: 100%">
         <div style="padding-right: 1.25rem; width: 50vw;">
             <p>
@@ -383,22 +398,13 @@
         </div>
 
     </div>
-    <h3>Competitive Sector Employment Share of Total Employment</h3>
-    <div class="chart-container" style="position: relative; height: 50vh;">
-        <canvas id="total"></canvas>
-    </div>
-    <h3>Competitive Sector Employment by Automation Risk</h3>
-    <div class="chart-container" style="position: relative; height: 50vh;">
-        <canvas id="automation"></canvas>
-    </div>
-    <h3>Competitive Sector Employment by Telework Capacity</h3>
-    <div class="chart-container" style="position: relative; height: 50vh;">
-        <canvas id="telework"></canvas>
-    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@latest"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-autocolors"></script>
+    <script src="./globals.js" type="module"></script>
+    <script src="./index.js" type="module"></script>
     <script src="./comparison.js" type="module"></script>
     <script src="./summary.js" type="module"></script>
 </body>

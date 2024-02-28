@@ -1,18 +1,5 @@
-const url = "https://dvrpc.github.io/cms-embedded-items/ceds/regions.xlsx";
-var file = await (await fetch(url)).arrayBuffer();
-var workbook = XLSX.read(file);
-
-var regionsMap = {
-  ATL: "Atlanta",
-  BAL: "Baltimore",
-  BOS: "Boston",
-  CHI: "Chicago",
-  DAL: "Dallas",
-  LAX: "Los Angeles",
-  NYC: "New York",
-  PIT: "Pittsburgh",
-  WAS: "Washington",
-};
+import { workbook } from "./globals.js";
+import { geographySelect, regionsMap } from "./index.js";
 
 var colors = {
   51: "#989A9B99",
@@ -33,14 +20,6 @@ var colors = {
   44: "#D21C8B99",
   72: "#AA272599",
 };
-
-var geographySelect = document.getElementById("geography");
-workbook.SheetNames.slice(2, -2).map((name) => {
-  var option = document.createElement("option");
-  option.value = name;
-  option.innerHTML = regionsMap[name];
-  geographySelect.appendChild(option);
-});
 
 var dvrpcWorksheet = workbook.Sheets["dvrpc"];
 var dvrpc_data = XLSX.utils.sheet_to_json(dvrpcWorksheet, { header: 1 });
@@ -193,5 +172,4 @@ function updateChart() {
   });
 }
 
-geographySelect.addEventListener("change", updateChart);
-updateChart();
+export { updateChart };
