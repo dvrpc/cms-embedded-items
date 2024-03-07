@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>CEDS Charts</title>
+  </head>
+  <style>
+    html,
+    body {
+      margin: 0px;
+    }
+  </style>
+  <body>
+    <h3>Competitive Sector Employment Share of Total Employment</h3>
+    <div
+      class="chart-container"
+      style="position: relative; height: 50vh; width: 95vw"
+    >
+      <canvas id="total"></canvas>
+    </div>
+    <h3>Competitive Sector Employment by Automation Risk</h3>
+    <div
+      class="chart-container"
+      style="position: relative; height: 50vh; width: 95vw"
+    >
+      <canvas id="automation"></canvas>
+    </div>
+    <h3>Competitive Sector Employment by Telework Capacity</h3>
+    <div
+      class="chart-container"
+      style="position: relative; height: 50vh; width: 95vw"
+    >
+      <canvas id="telework"></canvas>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-autocolors"></script>
+    <script src="./summary.js" type="module"></script>
+  </body>
+</html>
