@@ -24,7 +24,7 @@ function updateTotal() {
             return regionsMap[Object.keys(regionsMap)[context.dataIndex]] ===
               regionsMap[geographySelect.value] || context.dataIndex === 0
               ? "#662D91"
-              : "#662D9180";
+              : "#662D9170";
           },
         },
       ],
@@ -92,7 +92,7 @@ function updateAutomation() {
             return regionsMap[Object.keys(regionsMap)[context.dataIndex]] ===
               regionsMap[geographySelect.value] || context.dataIndex === 0
               ? "#ED5565"
-              : "#ED556580";
+              : "#ED556570";
           },
         },
         {
@@ -102,7 +102,7 @@ function updateAutomation() {
             return regionsMap[Object.keys(regionsMap)[context.dataIndex]] ===
               regionsMap[geographySelect.value] || context.dataIndex === 0
               ? "#F7941D"
-              : "#F7941D80";
+              : "#F7941D70";
           },
         },
         {
@@ -112,7 +112,7 @@ function updateAutomation() {
             return regionsMap[Object.keys(regionsMap)[context.dataIndex]] ===
               regionsMap[geographySelect.value] || context.dataIndex === 0
               ? "#2B1956"
-              : "#2B195680";
+              : "#2B195670";
           },
         },
       ],
@@ -177,7 +177,7 @@ function updateTelework() {
             return regionsMap[Object.keys(regionsMap)[context.dataIndex]] ===
               regionsMap[geographySelect.value] || context.dataIndex === 0
               ? "#ED5565"
-              : "#ED556580";
+              : "#ED556570";
           },
         },
         {
@@ -187,7 +187,7 @@ function updateTelework() {
             return regionsMap[Object.keys(regionsMap)[context.dataIndex]] ===
               regionsMap[geographySelect.value] || context.dataIndex === 0
               ? "#F7941D"
-              : "#F7941D80";
+              : "#F7941D70";
           },
         },
         {
@@ -197,7 +197,7 @@ function updateTelework() {
             return regionsMap[Object.keys(regionsMap)[context.dataIndex]] ===
               regionsMap[geographySelect.value] || context.dataIndex === 0
               ? "#2B1956"
-              : "#2B195680";
+              : "#2B195670";
           },
         },
       ],

@@ -16,6 +16,7 @@
 
     .chart {
         display: none;
+        height: 50vh;
     }
 
     .visible {
@@ -32,26 +33,28 @@
         more reliant on sectors with greater Automation Risk will more likely face challenges related to the reskilling
         and upskilling of a displaced workforce.
     </p>
-    <p>In the charts below, toggle between nine peer region’s from across the United States to see how Greater
-        Philadelphia’s economy compares in terms of Automation Risk and Telework Capacity at the sector-level.
+    <p>
+        Toggle through the charts below to better understand how Greater Philadelphia's economy compares to nine peer
+        region’s from across the United States in terms of employment, Automation Risk, and Telework Capacity at the
+        sector-level.
     </p>
-    <select id="geography"></select>
+
+    <select id="geography" style="margin-left: calc(50vw + 3rem);"></select>
     <div style="position: relative; max-width: 100vw; display: flex">
         <h3 style="width: 50vw; padding-left: 3rem;">Greater Philadelphia</h3>
-        <h3 style="width: 50vw; padding-left: 3rem;" id="geography-header"></h3>
+        <h3 style="width: 50vw; padding-left: 3rem;" class="geography-header"></h3>
     </div>
+
     <div class="chart-container" style="position: relative; height: 50vh; max-width: 49.5vw; display: flex">
         <canvas id="bubble-dvrpc"></canvas>
         <canvas id="bubble"></canvas>
     </div>
-    <select id="chart-toggle" autocomplete="off">
-        <option value="total" selected>Total</option>
-        <option value="automation">Automation</option>
-        <option value="telework">Telework</option>
-    </select>
+
+
     <div>
         <div style="display: flex; width: 100%;">
-            <div style="width: 50vw;">
+            <div style="width: 50vw; margin-top: 1.35rem;">
+                <h3>Greater Philadelphia</h3>
                 <p>
                     The Philadelphia region has five sectors with an LQ of 1.25 or higher:
                     Educational Services (2.26), Management of Companies and Enterprises
@@ -81,8 +84,13 @@
                     the region’s competitive sector total employment.
                 </p>
             </div>
-            <div style="width: 75vw; margin-left: 1rem; margin-right: 1rem;">
 
+            <div style="width: 75vw; height: 50vh; margin-left: 1rem; margin-right: 1rem;">
+                <select id="chart-toggle" autocomplete="off">
+                    <option value="total" selected>Total</option>
+                    <option value="automation">Automation</option>
+                    <option value="telework">Telework</option>
+                </select>
                 <div id="total" class="chart visible">
                     <h3>Competitive Sector Employment Share of Total Employment</h3>
                     <div class="chart-container" style="position: relative; height: 50vh; display: flex;">
@@ -102,7 +110,8 @@
                     </div>
                 </div>
             </div>
-            <div style="width: 50vw;">
+            <div style="width: 50vw; margin-top: 1.35rem;">
+                <h3 class="geography-header"></h3>
                 <div id="ATL" class="geography">
                     <p>
                         The Atlanta region has five sectors with an LQ of 1.25 or higher: Management of Companies and

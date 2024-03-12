@@ -97,8 +97,9 @@ var prev;
 function updateChart() {
   if (chart) chart.destroy();
   if (prev) prev.classList.toggle("geography");
-  document.getElementById("geography-header").textContent =
-    regionsMap[geographySelect.value];
+  document
+    .querySelectorAll(".geography-header")
+    .forEach((item) => (item.textContent = regionsMap[geographySelect.value]));
   document.getElementById(geographySelect.value).classList.toggle("geography");
   prev = document.getElementById(geographySelect.value);
 
