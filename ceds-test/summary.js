@@ -13,7 +13,7 @@ function updateTotal() {
 
   prevTotal = document.getElementById(geographySelect.value);
 
-  total = new Chart(document.getElementById("total"), {
+  total = new Chart(document.getElementById("total-chart"), {
     type: "bar",
     data: {
       labels: raw_data.map((row) => row[0]),
@@ -80,7 +80,7 @@ function updateAutomation() {
 
   prevAutomation = document.getElementById(geographySelect.value);
 
-  automation = new Chart(document.getElementById("automation"), {
+  automation = new Chart(document.getElementById("automation-chart"), {
     type: "bar",
     data: {
       labels: raw_data.map((row) => row[0]),
@@ -165,7 +165,7 @@ function updateTelework() {
 
   prevTelework = document.getElementById(geographySelect.value);
 
-  telework = new Chart(document.getElementById("telework"), {
+  telework = new Chart(document.getElementById("telework-chart"), {
     type: "bar",
     data: {
       labels: raw_data.map((row) => row[0]),

@@ -23,6 +23,15 @@ workbook.SheetNames.slice(2, -2).map((name) => {
   geographySelect.appendChild(option);
 });
 
+var prevChart = document.getElementById("chart-toggle").value;
+document
+  .getElementById("chart-toggle")
+  .addEventListener("change", function (event) {
+    document.getElementById(prevChart).classList.toggle("visible");
+    document.getElementById(event.target.value).classList.toggle("visible");
+    prevChart = event.target.value;
+  });
+
 geographySelect.addEventListener("change", () => {
   updateChart();
   updateTotal();

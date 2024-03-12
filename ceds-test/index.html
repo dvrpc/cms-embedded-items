@@ -13,6 +13,14 @@
     .geography {
         display: none;
     }
+
+    .chart {
+        display: none;
+    }
+
+    .visible {
+        display: block;
+    }
 </style>
 
 <body>
@@ -38,7 +46,7 @@
     </div>
     <div>
         <div style="display: flex; width: 100%">
-            <div style="width: 50vw;">
+            <div style="width: 50vw; margin-top: 1.75rem;">
                 <p>
                     The Philadelphia region has five sectors with an LQ of 1.25 or higher:
                     Educational Services (2.26), Management of Companies and Enterprises
@@ -69,20 +77,31 @@
                 </p>
             </div>
             <div style="width: 75vw; margin-left: 1rem; margin-right: 1rem;">
-                <h3>Competitive Sector Employment Share of Total Employment</h3>
-                <div class="chart-container" style="position: relative; height: 50vh; display: flex;">
-                    <canvas id="total"></canvas>
+                <select id="chart-toggle" autocomplete="off">
+                    <option value="total" selected>Total</option>
+                    <option value="automation">Automation</option>
+                    <option value="telework">Telework</option>
+                </select>
+                <div id="total" class="chart visible">
+                    <h3>Competitive Sector Employment Share of Total Employment</h3>
+                    <div class="chart-container" style="position: relative; height: 50vh; display: flex;">
+                        <canvas id="total-chart"></canvas>
+                    </div>
                 </div>
-                <h3>Competitive Sector Employment by Automation Risk</h3>
-                <div class="chart-container" style="position: relative; height: 50vh; display: flex;">
-                    <canvas id="automation"></canvas>
+                <div id="automation" class="chart">
+                    <h3>Competitive Sector Employment by Automation Risk</h3>
+                    <div class="chart-container" style="position: relative; height: 50vh; display: flex;">
+                        <canvas id="automation-chart"></canvas>
+                    </div>
                 </div>
-                <h3>Competitive Sector Employment by Telework Capacity</h3>
-                <div class="chart-container" style="position: relative; height: 50vh;  display: flex;">
-                    <canvas id="telework"></canvas>
+                <div id="telework" class="chart">
+                    <h3>Competitive Sector Employment by Telework Capacity</h3>
+                    <div class="chart-container" style="position: relative; height: 50vh;  display: flex;">
+                        <canvas id="telework-chart"></canvas>
+                    </div>
                 </div>
             </div>
-            <div style="width: 50vw;">
+            <div style="width: 50vw; margin-top: 1.75rem;">
                 <div id="ATL" class="geography">
                     <p>
                         The Atlanta region has five sectors with an LQ of 1.25 or higher: Management of Companies and
