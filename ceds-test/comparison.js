@@ -23,8 +23,28 @@ var colors = {
 
 var dvrpcWorksheet = workbook.Sheets["dvrpc"];
 var dvrpc_data = XLSX.utils.sheet_to_json(dvrpcWorksheet, { header: 1 });
+var totalEmployment = dvrpc_data[21][4];
 dvrpc_data = dvrpc_data.filter((row) => parseInt(row[4])).slice(0, -2);
 var maxRadius = Math.max(...dvrpc_data.map((row) => row[4]));
+var dvrpcComp = dvrpc_data.filter((row) => row[6] === "competitive");
+
+var sectors = document.getElementById("region-sectors");
+dvrpcComp.map((row) => {
+  var sector = document.createElement("div");
+  sector.className = "sector";
+  var stat = document.createElement("h2");
+  stat.className = "sector-stat";
+  stat.textContent = (row[4] / totalEmployment).toLocaleString(undefined, {
+    style: "percent",
+    minimumFractionDigits: 1,
+  });
+  var name = document.createElement("h4");
+  name.className = "sector-name";
+  name.textContent = row[1];
+  sector.appendChild(stat);
+  sector.appendChild(name);
+  sectors.appendChild(sector);
+});
 
 var dvrpcChart = new Chart(document.getElementById("bubble-dvrpc"), {
   type: "bubble",
@@ -96,16 +116,37 @@ var prev;
 
 function updateChart() {
   if (chart) chart.destroy();
-  if (prev) prev.classList.toggle("geography");
   document
     .querySelectorAll(".geography-header")
     .forEach((item) => (item.textContent = regionsMap[geographySelect.value]));
-  document.getElementById(geographySelect.value).classList.toggle("geography");
   prev = document.getElementById(geographySelect.value);
 
   var worksheet = workbook.Sheets[geographySelect.value];
   var raw_data = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+  var totalEmployment = raw_data[21][4];
   raw_data = raw_data.filter((row) => parseInt(row[4]));
+  var comp = raw_data
+    .filter((row) => row[6] === "competitive")
+    .sort((a, b) => b[4] - a[4]);
+
+  var sectors = document.getElementById("geography-sectors");
+  if (sectors.innerHTML) sectors.innerHTML = "";
+  comp.map((row) => {
+    var sector = document.createElement("div");
+    sector.className = "sector";
+    var stat = document.createElement("h2");
+    stat.className = "sector-stat";
+    stat.textContent = (row[4] / totalEmployment).toLocaleString(undefined, {
+      style: "percent",
+      minimumFractionDigits: 1,
+    });
+    var name = document.createElement("h4");
+    name.className = "sector-name";
+    name.textContent = row[1];
+    sector.appendChild(stat);
+    sector.appendChild(name);
+    sectors.appendChild(sector);
+  });
 
   chart = new Chart(document.getElementById("bubble"), {
     type: "bubble",

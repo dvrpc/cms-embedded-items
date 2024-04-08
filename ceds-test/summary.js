@@ -4,6 +4,14 @@ import { geographySelect, regionsMap } from "./index.js";
 var worksheet = workbook.Sheets["summary"];
 var raw_data = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
 raw_data = raw_data.slice(1);
+console.log(raw_data);
+var regionTotal = raw_data
+  .filter((row) => row[0] === "Greater Philadelphia")[0][1]
+  .toLocaleString(undefined, {
+    style: "percent",
+    minimumFractionDigits: 1,
+  });
+document.getElementById("region-total").textContent = regionTotal;
 
 var total;
 var prevTotal;
@@ -12,6 +20,13 @@ function updateTotal() {
   if (total) total.destroy();
 
   prevTotal = document.getElementById(geographySelect.value);
+  var geoTotal = raw_data
+    .filter((row) => row[0] === regionsMap[geographySelect.value])[0][1]
+    .toLocaleString(undefined, {
+      style: "percent",
+      minimumFractionDigits: 1,
+    });
+  document.getElementById("geography-total").textContent = geoTotal;
 
   total = new Chart(document.getElementById("total-chart"), {
     type: "bar",
