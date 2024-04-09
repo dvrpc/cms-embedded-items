@@ -3,7 +3,7 @@ import { geographySelect, regionsMap } from "./index.js";
 import { dvrpcTotal } from "./comparison.js";
 
 const scoreHex = {
-  low: "#2B1956",
+  low: "#662d91",
   medium: "#F7941D",
   high: "#ED5565",
 };
@@ -138,7 +138,9 @@ function updateAutomation() {
 
   var dvrpcSectors = document.getElementById("region-automation-sectors");
   if (dvrpcSectors.innerHTML) dvrpcSectors.innerHTML = "";
-  dvrpcComp.map((row) => generateSector(row, row[2], dvrpcSectors));
+  dvrpcComp.map((row) =>
+    generateSector(row, row[2], dvrpcSectors, scoreHex[row[8]])
+  );
 
   var geoWorksheet = workbook.Sheets[geographySelect.value];
   var geoComp = XLSX.utils
@@ -252,7 +254,9 @@ function updateTelework() {
 
   var dvrpcSectors = document.getElementById("region-telework-sectors");
   if (dvrpcSectors.innerHTML) dvrpcSectors.innerHTML = "";
-  dvrpcComp.map((row) => generateSector(row, row[3], dvrpcSectors));
+  dvrpcComp.map((row) =>
+    generateSector(row, row[3], dvrpcSectors, scoreHex[row[9]])
+  );
 
   var geoWorksheet = workbook.Sheets[geographySelect.value];
   var geoComp = XLSX.utils
