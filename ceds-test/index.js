@@ -23,12 +23,16 @@ workbook.SheetNames.slice(2, -2).map((name) => {
   geographySelect.appendChild(option);
 });
 
-var prevChart = document.getElementById("chart-toggle").value;
+export var prevChart = document.getElementById("chart-toggle").value;
 document
   .getElementById("chart-toggle")
   .addEventListener("change", function (event) {
-    document.getElementById(prevChart).classList.toggle("visible");
-    document.getElementById(event.target.value).classList.toggle("visible");
+    [...document.getElementsByClassName(prevChart)].map((el) =>
+      el.classList.toggle("visible")
+    );
+    [...document.getElementsByClassName(event.target.value)].map((el) =>
+      el.classList.toggle("visible")
+    );
     prevChart = event.target.value;
   });
 

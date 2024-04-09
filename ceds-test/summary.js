@@ -1,25 +1,37 @@
 import { workbook } from "./globals.js";
 import { geographySelect, regionsMap } from "./index.js";
+import { dvrpcTotal } from "./comparison.js";
+
+const scoreHex = {
+  low: "#2B1956",
+  medium: "#F7941D",
+  high: "#ED5565",
+};
+
+var dvrpcComp = workbook.Sheets["dvrpc"];
+dvrpcComp = XLSX.utils
+  .sheet_to_json(dvrpcComp, { header: 1 })
+  .filter((row) => row[6] === "competitive");
 
 var worksheet = workbook.Sheets["summary"];
 var raw_data = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
 raw_data = raw_data.slice(1);
-console.log(raw_data);
-var regionTotal = raw_data
-  .filter((row) => row[0] === "Greater Philadelphia")[0][1]
-  .toLocaleString(undefined, {
-    style: "percent",
-    minimumFractionDigits: 1,
-  });
-document.getElementById("region-total").textContent = regionTotal;
 
 var total;
 var prevTotal;
 
 function updateTotal() {
   if (total) total.destroy();
-
   prevTotal = document.getElementById(geographySelect.value);
+
+  var regionTotal = raw_data
+    .filter((row) => row[0] === "Greater Philadelphia")[0][1]
+    .toLocaleString(undefined, {
+      style: "percent",
+      minimumFractionDigits: 1,
+    });
+  document.getElementById("region-total").textContent = regionTotal;
+
   var geoTotal = raw_data
     .filter((row) => row[0] === regionsMap[geographySelect.value])[0][1]
     .toLocaleString(undefined, {
@@ -27,6 +39,20 @@ function updateTotal() {
       minimumFractionDigits: 1,
     });
   document.getElementById("geography-total").textContent = geoTotal;
+
+  var dvrpcSectors = document.getElementById("region-sectors");
+  if (dvrpcSectors.innerHTML) dvrpcSectors.innerHTML = "";
+  dvrpcComp.map((row) =>
+    generateSector(row, row[4] / dvrpcTotal, dvrpcSectors)
+  );
+  var geoWorksheet = workbook.Sheets[geographySelect.value];
+  var geoComp = XLSX.utils.sheet_to_json(geoWorksheet, { header: 1 });
+  var geoTotal = geoComp[21][4];
+  var geoSectors = document.getElementById("geography-sectors");
+  if (geoSectors.innerHTML) geoSectors.innerHTML = "";
+  geoComp
+    .filter((row) => row[6] === "competitive")
+    .map((row) => generateSector(row, row[4] / geoTotal, geoSectors));
 
   total = new Chart(document.getElementById("total-chart"), {
     type: "bar",
@@ -92,8 +118,37 @@ var prevAutomation;
 
 function updateAutomation() {
   if (automation) automation.destroy();
-
   prevAutomation = document.getElementById(geographySelect.value);
+
+  var regionTotal = raw_data
+    .filter((row) => row[0] === "Greater Philadelphia")[0][2]
+    .toLocaleString(undefined, {
+      style: "percent",
+      minimumFractionDigits: 1,
+    });
+  document.getElementById("region-total-automation").textContent = regionTotal;
+
+  var geoTotal = raw_data
+    .filter((row) => row[0] === regionsMap[geographySelect.value])[0][2]
+    .toLocaleString(undefined, {
+      style: "percent",
+      minimumFractionDigits: 1,
+    });
+  document.getElementById("geography-total-automation").textContent = geoTotal;
+
+  var dvrpcSectors = document.getElementById("region-automation-sectors");
+  if (dvrpcSectors.innerHTML) dvrpcSectors.innerHTML = "";
+  dvrpcComp.map((row) => generateSector(row, row[2], dvrpcSectors));
+
+  var geoWorksheet = workbook.Sheets[geographySelect.value];
+  var geoComp = XLSX.utils
+    .sheet_to_json(geoWorksheet, { header: 1 })
+    .filter((row) => row[6] === "competitive");
+  var geoSectors = document.getElementById("geography-automation-sectors");
+  if (geoSectors.innerHTML) geoSectors.innerHTML = "";
+  geoComp.map((row) =>
+    generateSector(row, row[2], geoSectors, scoreHex[row[8]])
+  );
 
   automation = new Chart(document.getElementById("automation-chart"), {
     type: "bar",
@@ -177,8 +232,37 @@ var prevTelework;
 
 function updateTelework() {
   if (telework) telework.destroy();
-
   prevTelework = document.getElementById(geographySelect.value);
+
+  var regionTotal = raw_data
+    .filter((row) => row[0] === "Greater Philadelphia")[0][5]
+    .toLocaleString(undefined, {
+      style: "percent",
+      minimumFractionDigits: 1,
+    });
+  document.getElementById("region-total-telework").textContent = regionTotal;
+
+  var geoTotal = raw_data
+    .filter((row) => row[0] === regionsMap[geographySelect.value])[0][5]
+    .toLocaleString(undefined, {
+      style: "percent",
+      minimumFractionDigits: 1,
+    });
+  document.getElementById("geography-total-telework").textContent = geoTotal;
+
+  var dvrpcSectors = document.getElementById("region-telework-sectors");
+  if (dvrpcSectors.innerHTML) dvrpcSectors.innerHTML = "";
+  dvrpcComp.map((row) => generateSector(row, row[3], dvrpcSectors));
+
+  var geoWorksheet = workbook.Sheets[geographySelect.value];
+  var geoComp = XLSX.utils
+    .sheet_to_json(geoWorksheet, { header: 1 })
+    .filter((row) => row[6] === "competitive");
+  var geoSectors = document.getElementById("geography-telework-sectors");
+  if (geoSectors.innerHTML) geoSectors.innerHTML = "";
+  geoComp.map((row) =>
+    generateSector(row, row[3], geoSectors, scoreHex[row[9]])
+  );
 
   telework = new Chart(document.getElementById("telework-chart"), {
     type: "bar",
@@ -256,5 +340,23 @@ function updateTelework() {
     },
   });
 }
+
+const generateSector = (row, num, sectors, hex = null) => {
+  var sector = document.createElement("div");
+  sector.className = "sector";
+  var stat = document.createElement("h2");
+  if (hex) stat.style.color = hex;
+  stat.className = "sector-stat";
+  stat.textContent = num.toLocaleString(undefined, {
+    style: "percent",
+    minimumFractionDigits: 1,
+  });
+  var name = document.createElement("h4");
+  name.className = "sector-name";
+  name.textContent = row[1];
+  sector.appendChild(stat);
+  sector.appendChild(name);
+  sectors.appendChild(sector);
+};
 
 export { updateTotal, updateTelework, updateAutomation };
