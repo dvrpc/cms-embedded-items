@@ -52,9 +52,10 @@ function updateTotal() {
   var geoTotal = geoComp[21][4];
   var geoSectors = document.getElementById("geography-sectors");
   if (geoSectors.innerHTML) geoSectors.innerHTML = "";
-  geoComp
-    .filter((row) => row[6] === "competitive")
-    .map((row) => generateSector(row, row[4] / geoTotal, geoSectors));
+  geoComp = geoComp.filter((row) => row[6] === "competitive");
+  geoComp.map((row) => generateSector(row, row[4] / geoTotal, geoSectors));
+
+  document.getElementById("geo-comp-length").textContent = geoComp.length;
 
   total = new Chart(document.getElementById("total-chart"), {
     type: "bar",
