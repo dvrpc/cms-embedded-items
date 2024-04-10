@@ -13,6 +13,8 @@ dvrpcComp = XLSX.utils
   .sheet_to_json(dvrpcComp, { header: 1 })
   .filter((row) => row[6] === "competitive");
 
+document.getElementById("region-comp-length").textContent = dvrpcComp.length;
+
 var worksheet = workbook.Sheets["summary"];
 var raw_data = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
 raw_data = raw_data.slice(1);
@@ -67,10 +69,12 @@ function updateTotal() {
               ? "#662D91"
               : "#662D9170";
           },
+          label: "Percentage of Employment in Competitive Sectors",
         },
       ],
     },
     options: {
+      animation: false,
       maintainAspectRatio: false,
       layout: {
         autoPadding: false,
@@ -89,9 +93,6 @@ function updateTotal() {
       plugins: {
         autocolors: {
           mode: "label",
-        },
-        legend: {
-          display: false,
         },
         tooltip: {
           callbacks: {
@@ -190,6 +191,7 @@ function updateAutomation() {
       ],
     },
     options: {
+      animation: false,
       plugins: {
         tooltip: {
           callbacks: {
@@ -306,6 +308,7 @@ function updateTelework() {
       ],
     },
     options: {
+      animation: false,
       plugins: {
         tooltip: {
           callbacks: {

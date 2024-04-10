@@ -44,6 +44,7 @@ var dvrpcChart = new Chart(document.getElementById("bubble-dvrpc"), {
     ],
   },
   options: {
+    animation: false,
     scales: {
       x: {
         title: {
@@ -123,6 +124,7 @@ function updateChart() {
       ],
     },
     options: {
+      animation: false,
       scales: {
         x: {
           title: {
