@@ -6,6 +6,5 @@ Houses content from old site to be embedded.
 ```
 <script src="https://cdn.jsdelivr.net/npm/@iframe-resizer/child"></script>
 ```
-```
-```
+
 
