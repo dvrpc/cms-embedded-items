@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en" class="Multimodal_Access_to_Tourist_Attractions">
+  <head>
+    <title>
+      DVRPC > Economic Development > Multimodal Access to Tourist Attractions
+    </title>
+    <meta charset="UTF-8" />
+    <meta name="Created" content="2019-03" />
+    <meta
+      name="Description"
+      content="In accordance with the Fixing America's Surface Transportation Act (FAST) of 2015, DVRPC has been evaluating multimodal access to tourist destinations in Greater Philadelphia. Tourism has a tremendous tax, economic and employment impact on the recreation, entertainment, accommodations, food services, and transportation sectors."
+    />
+    <meta
+      name="Keywords"
+      content="Tourism, FAST Act, Multimodal access, Greater Philadelphia Tourism, Tourism and hospitality, Jobs, Recreation, Economic Development,  DVRPC, Delaware Valley Regional Planning Commission, Regional Planning"
+    />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="Author"
+      content="Delaware Valley Regional Planning Commission (DVRPC)"
+    />
+    <meta name="Owner" content="webmaster@dvrpc.org" />
+    <meta name="Distribution" content="global" />
+    <meta name="Robots" content="index, follow" />
+    <meta name="Copyright" content="1995-2019 all rights reserved" />
+    <!-- DVRPC Website VERSION #7.0 Copyright (c) 1995-2019 Delaware Valley Regional Planning Commission. All rights reserved.  -->
+    <link rel="SHORTCUT ICON" href="/favicon.ico" />
+    <link
+      href="https://api.tiles.mapbox.com/mapbox-gl-js/v0.43.0/mapbox-gl.css"
+      rel="stylesheet"
+    />
+    <script type="module" src="./index.js"></script>
+    <style>
+      body {
+        font-family: Roboto;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+      }
+
+      #map-container {
+        position: relative;
+        height: 100%;
+      }
+
+      #map {
+        position: relative;
+        height: inherit;
+        width: inherit;
+      }
+    </style>
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
+
+  <body>
+    <h2 class="tourism-yearly">Tourist Attraction Connection</h2>
+    <form class="map-toggle-form">
+      <p>
+        Explore Visitor Attraction Connectivity in the map below. Select an
+        option from the dropdown menu to update the Visitor Attractions on the
+        map.
+      </p>
+      <select class="map-toggle-select" id="tourism-select">
+        <option default value="VisitorAttractions_All">All</option>
+        <option value="VisitorAttractions_Bus">
+          Located within a Bus Walkshed (1/4 mile radius of a bus stop)
+        </option>
+        <option value="VisitorAttractions_Rail">
+          Located within a Rail Walkshed (1/2 mile radius of a train station)
+        </option>
+        <option value="VisitorAttractions_Circuit">
+          Located within a Circuit Trails Walkshed (1/4 mile radius of a planned
+          or completed)
+        </option>
+      </select>
+    </form>
+
+    <div id="map-container">
+      <div id="map"></div>
+    </div>
+
+    <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v0.43.0/mapbox-gl.js"></script>
+  </body>
+</html>
