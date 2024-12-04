@@ -287,9 +287,6 @@ try {
       const table = makeTable(features);
 
       tableWrapper.appendChild(table);
-    })
-    .then(() => {
-      if ("parentIFrame" in window) window.parentIframe.resize({ log: true });
     });
 } catch (error) {
   console.log(error);
@@ -298,3 +295,11 @@ try {
     "Sorry, the trails table data could not be fetched. Please refresh or try again later.";
   tableWrapper.appendChild(p);
 }
+
+document.onreadystatechange = function () {
+  if (document.readyState == "interactive") {
+    if ("parentIframe" in window) {
+      parentIframe.resize();
+    }
+  }
+};
