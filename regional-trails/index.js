@@ -287,6 +287,11 @@ try {
       const table = makeTable(features);
 
       tableWrapper.appendChild(table);
+    })
+    .then(() => {
+      if ("parentIframe" in window) {
+        parentIframe.resize();
+      }
     });
 } catch (error) {
   console.log(error);
