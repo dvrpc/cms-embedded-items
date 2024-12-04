@@ -303,3 +303,5 @@ window.iframeResizer = {
     window.parentIframe.resize();
   },
 };
+
+if ("parentIFrame" in window) window.parentIframe.resize();
