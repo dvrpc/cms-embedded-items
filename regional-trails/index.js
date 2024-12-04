@@ -287,15 +287,6 @@ try {
       const table = makeTable(features);
 
       tableWrapper.appendChild(table);
-    })
-    .then(() => {
-      window.iframeResizer = {
-        onReady() {
-          const myId = window.parentIframe.getId();
-          console.log("The ID of the iframe in the parent page is: " + myId);
-          window.parentIframe.resize();
-        },
-      };
     });
 } catch (error) {
   console.log(error);
@@ -304,3 +295,11 @@ try {
     "Sorry, the trails table data could not be fetched. Please refresh or try again later.";
   tableWrapper.appendChild(p);
 }
+
+window.iframeResizer = {
+  onReady() {
+    const myId = window.parentIframe.getId();
+    console.log("The ID of the iframe in the parent page is: " + myId);
+    window.parentIframe.resize();
+  },
+};
