@@ -1,10 +1,3 @@
-window.iframeResizer = {
-  onReady() {
-    const myId = window.parentIframe.getId();
-    console.log("The ID of the iframe in the parent page is: " + myId);
-  },
-};
-
 // START Map Functions
 mapboxgl.accessToken =
   "pk.eyJ1IjoibW1vbHRhIiwiYSI6ImNqZDBkMDZhYjJ6YzczNHJ4cno5eTcydnMifQ.RJNJ7s7hBfrJITOBZBdcOA";
@@ -295,7 +288,15 @@ try {
 
       tableWrapper.appendChild(table);
     })
-    .then(() => window.parentIframe.resize());
+    .then(() => {
+      window.iframeResizer = {
+        onReady() {
+          const myId = window.parentIframe.getId();
+          console.log("The ID of the iframe in the parent page is: " + myId);
+          window.parentIframe.resize();
+        },
+      };
+    });
 } catch (error) {
   console.log(error);
   const p = document.createElement("p");
