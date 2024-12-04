@@ -294,7 +294,8 @@ try {
       const table = makeTable(features);
 
       tableWrapper.appendChild(table);
-    });
+    })
+    .then(() => window.iframeResizer.resize());
 } catch (error) {
   console.log(error);
   const p = document.createElement("p");
