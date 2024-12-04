@@ -289,7 +289,7 @@ try {
       tableWrapper.appendChild(table);
     })
     .then(() => {
-      if ("parentIFrame" in window) window.parentIframe.resize();
+      if ("parentIFrame" in window) window.parentIframe.resize({ log: true });
     });
 } catch (error) {
   console.log(error);
