@@ -1,3 +1,10 @@
+window.iframeResizer = {
+  onReady() {
+    const myId = window.parentIframe.getId();
+    console.log("The ID of the iframe in the parent page is: " + myId);
+  },
+};
+
 // START Map Functions
 mapboxgl.accessToken =
   "pk.eyJ1IjoibW1vbHRhIiwiYSI6ImNqZDBkMDZhYjJ6YzczNHJ4cno5eTcydnMifQ.RJNJ7s7hBfrJITOBZBdcOA";
@@ -287,12 +294,6 @@ try {
       const table = makeTable(features);
 
       tableWrapper.appendChild(table);
-    })
-    .then(() => {
-      if ("parentIframe" in window) {
-        window.parent.console.log("parent iframe found");
-        parentIframe.resize();
-      }
     });
 } catch (error) {
   console.log(error);
