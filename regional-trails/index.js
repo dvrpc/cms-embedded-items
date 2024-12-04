@@ -290,6 +290,7 @@ try {
     })
     .then(() => {
       if ("parentIframe" in window) {
+        window.parent.console.log("parent iframe found");
         parentIframe.resize();
       }
     });
