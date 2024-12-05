@@ -296,7 +296,7 @@ try {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  console.log("parentIframe" in window);
+  console.log("iFrameResize" in window);
   if ("parentIframe" in window) {
     parentIframe.resize();
   }
