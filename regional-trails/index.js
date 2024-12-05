@@ -287,10 +287,11 @@ try {
 
       tableWrapper.appendChild(table);
 
-      console.log("parentIframe" in window);
-      if ("parentIframe" in window) {
-        parentIframe.resize();
-      }
+      setInterval(function () {
+        if ("parentIframe" in window) {
+          parentIframe.resize();
+        }
+      }, 100);
     });
 } catch (error) {
   console.log(error);
