@@ -288,13 +288,7 @@ try {
       tableWrapper.appendChild(table);
     })
     .then(() => {
-      const waitInterval = setInterval(function () {
-        console.log("parentIframe" in window);
-        if (window.parentIframe) {
-          parentIframe.resize();
-          clearInterval(waitInterval);
-        }
-      }, 100);
+      setInterval(pollIframe, 500);
     });
 } catch (error) {
   console.log(error);
@@ -303,3 +297,10 @@ try {
     "Sorry, the trails table data could not be fetched. Please refresh or try again later.";
   tableWrapper.appendChild(p);
 }
+
+var pollIframe = () => {
+  if ("parentIframe" in window) {
+    parentIframe.resize();
+    clearInterval();
+  }
+};
