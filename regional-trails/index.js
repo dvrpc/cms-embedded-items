@@ -275,28 +275,33 @@ const sortTable = (n) => {
   }
 };
 
-// fetch data and invoke fncs
-document.addEventListener("DOMContentLoaded", (event) => {
-  try {
-    fetch(
-      'https://arcgis.dvrpc.org/portal/rest/services/Transportation/RegionalTrailsProgram/FeatureServer/0/query?where=1=1&outfields="county,sponsor,award,name,year"&outsr=4326&returnGeometry=false&f=pjson',
-    )
-      .then((response) => response.json())
-      .then((result) => {
-        // extract features
-        const features = result.features.map((feature) => feature.attributes);
-        const table = makeTable(features);
+window.iFrameResizer = {
+  onReady: () => {
+    try {
+      fetch(
+        'https://arcgis.dvrpc.org/portal/rest/services/Transportation/RegionalTrailsProgram/FeatureServer/0/query?where=1=1&outfields="county,sponsor,award,name,year"&outsr=4326&returnGeometry=false&f=pjson',
+      )
+        .then((response) => response.json())
+        .then((result) => {
+          // extract features
+          const features = result.features.map((feature) => feature.attributes);
+          const table = makeTable(features);
 
-        tableWrapper.appendChild(table);
-      });
-    if ("parentIframe" in window) {
-      parentIframe.resize();
+          tableWrapper.appendChild(table);
+        });
+      if ("parentIframe" in window) {
+        console.log(parentIframe.getId());
+        parentIframe.resize({
+          log: true,
+          heightCalculationMethod: "lowestElement",
+        });
+      }
+    } catch (error) {
+      console.log(error);
+      const p = document.createElement("p");
+      p.textContent =
+        "Sorry, the trails table data could not be fetched. Please refresh or try again later.";
+      tableWrapper.appendChild(p);
     }
-  } catch (error) {
-    console.log(error);
-    const p = document.createElement("p");
-    p.textContent =
-      "Sorry, the trails table data could not be fetched. Please refresh or try again later.";
-    tableWrapper.appendChild(p);
-  }
-});
+  },
+};
