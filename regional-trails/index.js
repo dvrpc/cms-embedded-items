@@ -290,7 +290,7 @@ try {
     .then(() => {
       const waitInterval = setInterval(function () {
         console.log("parentIframe" in window);
-        if (window.parentIFrame) {
+        if (window.parentIframe) {
           parentIframe.resize();
           clearInterval(waitInterval);
         }
