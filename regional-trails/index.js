@@ -286,14 +286,6 @@ try {
       const table = makeTable(features);
 
       tableWrapper.appendChild(table);
-    })
-    .then(() => {
-      if ("parentIframe" in window) {
-        parentIframe.resize({
-          log: true,
-          heightCalculationMethod: "lowestElement",
-        });
-      }
     });
 } catch (error) {
   console.log(error);
