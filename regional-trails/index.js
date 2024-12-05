@@ -286,9 +286,6 @@ try {
       const table = makeTable(features);
 
       tableWrapper.appendChild(table);
-    })
-    .then(() => {
-      setInterval(pollIframe, 500);
     });
 } catch (error) {
   console.log(error);
@@ -297,10 +294,3 @@ try {
     "Sorry, the trails table data could not be fetched. Please refresh or try again later.";
   tableWrapper.appendChild(p);
 }
-
-var pollIframe = () => {
-  if ("parentIframe" in window) {
-    parentIframe.resize();
-    clearInterval();
-  }
-};
