@@ -288,10 +288,13 @@ try {
       tableWrapper.appendChild(table);
     })
     .then(() => {
-      console.log("parentIframe" in window);
-      if ("parentIframe" in window) {
-        parentIframe.resize();
-      }
+      const waitInterval = setInterval(function () {
+        console.log("parentIframe" in window);
+        if (window.parentIFrame) {
+          parentIframe.resize();
+          clearInterval(waitInterval);
+        }
+      }, 100);
     });
 } catch (error) {
   console.log(error);
